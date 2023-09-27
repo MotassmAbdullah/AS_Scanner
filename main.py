@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
-import cv2
+# import cv2
 
 
 # import scipy.interpolate
