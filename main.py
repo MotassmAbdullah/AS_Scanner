@@ -107,7 +107,7 @@ if __name__ == '__main__':
         elif st.session_state.input_im == "Upload" and st.session_state.sup is None:
             st.session_state.img = st.file_uploader("Upload your image", accept_multiple_files=True)
             if st.session_state.img:
-                st.session_state.img = cv2.imread("Img_2.jpg", cv2.IMREAD_GRAYSCALE)
+                st.session_state.img = cv2.imread("./Img_2.jpg", cv2.IMREAD_GRAYSCALE)
             else:
                 st.error("No Images uploaded")
                 with st.spinner():
