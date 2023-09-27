@@ -61,7 +61,7 @@ if __name__ == '__main__':
         st.text("<<<Preview in the side bar<<<")
         st.sidebar.title("Preview")
         if st.session_state.input_im == "Example" and st.session_state.sup is None:
-            st.session_state.img = cv2.imread("img_1.jfif", cv2.IMREAD_GRAYSCALE)
+            st.session_state.img = cv2.imread("./img_1.jfif", cv2.IMREAD_GRAYSCALE)
             st.session_state.data = [[152, (192 + 152), 368, (190 + 368), 10, 10],
                                      [152, (192 + 152), 260, (99 + 260), 5, 10],
                                      [152, (192 + 152), 209, (40 + 209), 2, 10],
@@ -82,7 +82,7 @@ if __name__ == '__main__':
                                       "Form", "School type",
                                       "Sex", "Nationality", "Answers 1", "Answers 2", "Answers 3", "Answers 4"]
         elif st.session_state.input_im == "Solved Ex" and st.session_state.sup is None:
-            st.session_state.img = cv2.imread("Img_2.jpg", cv2.IMREAD_GRAYSCALE)
+            st.session_state.img = cv2.imread("./Img_2.jpg", cv2.IMREAD_GRAYSCALE)
             st.session_state.data = [[152, (192 + 152), 368, (190 + 368), 10, 10],
                                      [152, (192 + 152), 260, (99 + 260), 5, 10],
                                      [152, (192 + 152), 209, (40 + 209), 2, 10],
