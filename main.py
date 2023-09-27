@@ -1,11 +1,6 @@
-import math
 import numpy as np
 import pandas as pd
-import altair as alt
 import streamlit as st
-import streamlit_image_crop
-from streamlit_image_crop import image_crop
-from streamlit_image_crop import Crop
 import cv2
 
 
