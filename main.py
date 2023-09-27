@@ -55,7 +55,7 @@ if __name__ == '__main__':
     if st.session_state.page == 0:
         st.subheader("Welcome Moaiad أهلا مؤيد")
         if st.session_state.sup is None:
-            st.session_state.input_im = st.radio("Input", ["Example", "Solved Ex", "Upload"], 1)
+            st.session_state.input_im = st.radio("Input", ["Example", "Solved Ex", "Upload"], 2)
         else:
             st.session_state.input_im = st.radio("Input", ["Example", "Solved Ex", "Upload"], st.session_state.sup)
         st.text("<<<Preview in the side bar<<<")
