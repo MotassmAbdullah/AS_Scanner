@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import cv2
-import os
 
 
 # import scipy.interpolate
@@ -113,10 +112,7 @@ if __name__ == '__main__':
         elif st.session_state.input_im == "Upload ارفع الملف" and st.session_state.sup is None:
             file_up = st.file_uploader("Upload your image إرفع الصورة هنا", accept_multiple_files=False)
             if file_up is not None:
-                st.write(file_up)
-                with open(os.path.join("tempDir", file_up.name), "wb") as f:
-                    f.write(file_up.getbuffer())
-                st.session_state.img = cv2.imread(file_up, cv2.IMREAD_GRAYSCALE)
+                st.session_state.img = cv2.imdecode(np.fromstring(file_up.getvalue(), np.uint8), cv2.IMREAD_GRAYSCALE)
             else:
                 st.error("No Images uploaded تأكد من الملف المرفوع")
                 with st.spinner():
