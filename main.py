@@ -35,6 +35,8 @@ def ASS(im, d, o):
             re.append((cont.index(min(cont))))
             cont = []
             se = se + sh
+    else:
+        st.error("Some data missing R04")
     if re is None:
         st.error("no result")
     else:
@@ -48,6 +50,7 @@ if __name__ == '__main__':
     st.title("AS Scanner قارئ اوراق الاجابات")
     st.sidebar.info('License expiry date 1/1/2024 نهاية الاشتراك')
     st.sidebar.text("0.1.0 (Privet app تطبيق خاص)")
+    st.sidebar.text("Contact +966503029722 للتواصل")
     if "page" not in st.session_state:
         st.session_state.page = 0
         st.session_state.img = cv2.imread("./img_1.jfif")
@@ -107,16 +110,33 @@ if __name__ == '__main__':
                                       "Form", "School type", "Sex", "Nationality", "Answers 1", "Answers 2",
                                       "Answers 3", "Answers 4"]
         elif st.session_state.input_im == "Upload ارفع الملف" and st.session_state.sup is None:
-            st.session_state.img = st.file_uploader("Upload your image إرفع الصورة هنا", accept_multiple_files=False)
-            if st.session_state.img:
-                st.session_state.img = cv2.imread("./img_2.jpg", cv2.IMREAD_GRAYSCALE)
+            file_up = st.file_uploader("Upload your image إرفع الصورة هنا", accept_multiple_files=False)
+            if file_up:
+                st.session_state.img = cv2.imread(file_up[0].name, cv2.IMREAD_GRAYSCALE)
             else:
                 st.error("No Images uploaded تأكد من الملف المرفوع")
                 with st.spinner():
                     st.stop()
             st.info("Make sure scanning areas are correct تأكد من تحديد مناطق الاحل")
-            st.session_state.Orin = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-            st.session_state.Field = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+            st.session_state.Orin = ["Vertical", "Vertical", "Vertical", "Vertical", "Vertical", "Vertical",
+                                     "Vertical", "Vertical", "Vertical", "Horizontal", "Horizontal", "Horizontal",
+                                     "Horizontal"]
+            st.session_state.Field = ["National ID", "School ID", "Administration ID", "Course", "Student Grade",
+                                      "Form", "School type", "Sex", "Nationality", "Answers 1", "Answers 2",
+                                      "Answers 3", "Answers 4"]
+            st.session_state.data = [[152, (192 + 152), 368, (190 + 368), 10, 10],
+                                     [152, (192 + 152), 260, (99 + 260), 5, 10],
+                                     [152, (192 + 152), 209, (40 + 209), 2, 10],
+                                     [380, (52 + 380), 540, (17 + 540), 1, 3],
+                                     [380, (52 + 380), 477, (17 + 477), 1, 2],
+                                     [380, (52 + 380), 380, (17 + 380), 1, 3],
+                                     [373, (52 + 373), 347, (17 + 347), 1, 3],
+                                     [380, (52 + 380), 292, (17 + 292), 1, 2],
+                                     [373, (52 + 373), 252, (17 + 252), 1, 2],
+                                     [525, (290 + 525), 444, (90 + 444), 15, 4],
+                                     [525, (290 + 525), 315, (90 + 315), 15, 4],
+                                     [525, (290 + 525), 187, (90 + 187), 15, 4],
+                                     [525, (290 + 525), 56, (90 + 56), 15, 4]]
         st.sidebar.image(st.session_state.img, st.session_state.input_im)
         L1, L3 = st.columns(2)
         with L1:
