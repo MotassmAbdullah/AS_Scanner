@@ -44,8 +44,10 @@ def ASS(im, d, o):
 
 if __name__ == '__main__':
     st.set_page_config("AS Scanner", ":scroll:")
+    st.balloons()
+    st.progress(3, "Membership counter (0001/200,000) عداد المشتركين")
     st.title("AS Scanner قارئ اوراق الاجابات")
-    st.sidebar.info('License expiry date 1/1/2024')
+    st.sidebar.info('License expiry date 1/1/2024 نهاية الاشتراك')
     st.sidebar.text("0.1.0 (Privet app تطبيق خاص)")
     if "page" not in st.session_state:
         st.session_state.page = 0
@@ -55,12 +57,12 @@ if __name__ == '__main__':
     if st.session_state.page == 0:
         st.subheader("Welcome Moaiad أهلا مؤيد")
         if st.session_state.sup is None:
-            st.session_state.input_im = st.radio("Input", ["Example", "Solved Ex", "Upload"], 2)
+            st.session_state.input_im = st.radio("Input", ["Example نموذج", "Solved Ex", "Upload"], 2)
         else:
-            st.session_state.input_im = st.radio("Input", ["Example", "Solved Ex", "Upload"], st.session_state.sup)
+            st.session_state.input_im = st.radio("Input", ["Example نموذج", "Solved Ex", "Upload"], st.session_state.sup)
         st.text("<<<Preview in the side bar<<<")
         st.sidebar.title("Preview")
-        if st.session_state.input_im == "Example" and st.session_state.sup is None:
+        if st.session_state.input_im == "Example نموذج" and st.session_state.sup is None:
             st.session_state.img = cv2.imread("./img_1.jfif", cv2.IMREAD_GRAYSCALE)
             st.session_state.data = [[152, (192 + 152), 368, (190 + 368), 10, 10],
                                      [152, (192 + 152), 260, (99 + 260), 5, 10],
@@ -116,7 +118,7 @@ if __name__ == '__main__':
             st.session_state.Orin = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
             st.session_state.Field = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
             st.write(st.session_state.img)
-            st.sidebar.image(st.session_state.img, st.session_state.input_im)
+        st.sidebar.image(st.session_state.img, st.session_state.input_im)
         L1, L3 = st.columns(2)
         with L1:
             if st.button("Scanning area", type="secondary", use_container_width=True):
@@ -1200,7 +1202,7 @@ if __name__ == '__main__':
         L1, L2 = st.columns(2)
         with L2:
             if st.button("Submit", type="primary", use_container_width=True):
-                if st.session_state.input_im == "Example":
+                if st.session_state.input_im == "Example نموذج":
                     st.session_state.sup = 0
                 elif st.session_state.input_im == "Solved Ex":
                     st.session_state.sup = 1
