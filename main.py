@@ -117,7 +117,6 @@ if __name__ == '__main__':
             st.info("Make sure scanning areas are correct تأكد من تحديد مناطق الاحل")
             st.session_state.Orin = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
             st.session_state.Field = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
-            st.write(st.session_state.img)
         st.sidebar.image(st.session_state.img, st.session_state.input_im)
         L1, L3 = st.columns(2)
         with L1:
