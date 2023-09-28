@@ -234,7 +234,7 @@ if __name__ == '__main__':
                 # WY = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
-            if st.button("Back", use_container_width=True):
+            if st.button("Back-رجوع", use_container_width=True):
                 st.session_state.page = 0
                 st._rerun()
             img = st.session_state.img.copy()
@@ -317,7 +317,7 @@ if __name__ == '__main__':
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 1
                 st._rerun()
             img = st.session_state.img.copy()
@@ -401,7 +401,7 @@ if __name__ == '__main__':
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 2
                 st._rerun()
             img = st.session_state.img.copy()
@@ -486,7 +486,7 @@ if __name__ == '__main__':
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
-            if st.button("Back", use_container_width=True):
+            if st.button("Back-رجوع", use_container_width=True):
                 st.session_state.page = 3  # U
                 st._rerun()
             img = st.session_state.img.copy()
@@ -570,7 +570,7 @@ if __name__ == '__main__':
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 4
                 st._rerun()
             img = st.session_state.img.copy()
@@ -654,7 +654,7 @@ if __name__ == '__main__':
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 5
                 st._rerun()
             img = st.session_state.img.copy()
@@ -737,7 +737,7 @@ if __name__ == '__main__':
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 6
                 st._rerun()
             img = st.session_state.img.copy()
@@ -822,7 +822,7 @@ if __name__ == '__main__':
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 7
                 st._rerun()
             img = st.session_state.img.copy()
@@ -907,7 +907,7 @@ if __name__ == '__main__':
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 8
                 st._rerun()
             img = st.session_state.img.copy()
@@ -992,7 +992,7 @@ if __name__ == '__main__':
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 9
                 st._rerun()
             img = st.session_state.img.copy()
@@ -1075,7 +1075,7 @@ if __name__ == '__main__':
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 10
                 st._rerun()
             img = st.session_state.img.copy()
@@ -1158,7 +1158,7 @@ if __name__ == '__main__':
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 11
                 st._rerun()
             img = st.session_state.img.copy()
@@ -1247,7 +1247,7 @@ if __name__ == '__main__':
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
         with L1:
-            if st.button("Back", use_container_width=True):  # U
+            if st.button("Back-رجوع", use_container_width=True):  # U
                 st.session_state.page = 12
                 st._rerun()
             img = st.session_state.img.copy()
