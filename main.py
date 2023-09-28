@@ -114,7 +114,7 @@ if __name__ == '__main__':
             file_up = st.file_uploader("Upload your image إرفع الصورة هنا", accept_multiple_files=False)
             if file_up is not None:
                 st.write(file_up)
-                with open(os.path.join("tempDir/", file_up.name), "wb") as f:
+                with open(os.path.join("tempDir", file_up.name), "wb") as f:
                     f.write(file_up.getbuffer())
                 st.session_state.img = cv2.imread(file_up, cv2.IMREAD_GRAYSCALE)
             else:
