@@ -44,7 +44,7 @@ def ASS(im, d, o):
 
 if __name__ == '__main__':
     st.set_page_config("AS Scanner", ":scroll:")
-    st.progress(3, "Membership counter (0000 $ / 2,000,000 $)  عداد المشتركين")
+    st.progress(3, "Membership counter (0000$ / 2,000,000$)  عداد المشتركين")
     st.title("AS Scanner قارئ اوراق الاجابات")
     st.sidebar.info('License expiry date 1/1/2024 نهاية الاشتراك')
     st.sidebar.text("0.1.0 (Privet app تطبيق خاص)")
