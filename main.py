@@ -44,24 +44,24 @@ def ASS(im, d, o):
 
 if __name__ == '__main__':
     st.set_page_config("AS Scanner", ":scroll:")
-    st.balloons()
-    st.progress(3, "Membership counter (0001/200,000) عداد المشتركين")
+    st.progress(3, "Membership counter (0000 $ / 2,000,000 $)  عداد المشتركين")
     st.title("AS Scanner قارئ اوراق الاجابات")
     st.sidebar.info('License expiry date 1/1/2024 نهاية الاشتراك')
     st.sidebar.text("0.1.0 (Privet app تطبيق خاص)")
     if "page" not in st.session_state:
         st.session_state.page = 0
-        st.session_state.img = cv2.imread("img_1.jfif")
+        st.session_state.img = cv2.imread("./img_1.jfif")
         st.session_state.sup = None
+        st.balloons()
 
     if st.session_state.page == 0:
         st.subheader("Welcome Moaiad أهلا مؤيد")
         if st.session_state.sup is None:
-            st.session_state.input_im = st.radio("Input", ["Example نموذج", "Solved Ex", "Upload"], 2)
+            st.session_state.input_im = st.radio("Input", ["Example نموذج", "Solved Ex نموذج محلول", "Upload ارفع الملف"], 2)
         else:
-            st.session_state.input_im = st.radio("Input", ["Example نموذج", "Solved Ex", "Upload"], st.session_state.sup)
-        st.text("<<<Preview in the side bar<<<")
-        st.sidebar.title("Preview")
+            st.session_state.input_im = st.radio("Input", ["Example نموذج", "Solved Ex نموذج محلول", "Upload ارفع الملف"], st.session_state.sup)
+        st.text("<<<Preview image in the side bar إستعرض الورقة في الشريط الجانبي<<<")
+        st.sidebar.title("Preview إستعراض")
         if st.session_state.input_im == "Example نموذج" and st.session_state.sup is None:
             st.session_state.img = cv2.imread("./img_1.jfif", cv2.IMREAD_GRAYSCALE)
             st.session_state.data = [[152, (192 + 152), 368, (190 + 368), 10, 10],
@@ -83,7 +83,7 @@ if __name__ == '__main__':
             st.session_state.Field = ["National ID", "School ID", "Administration ID", "Course", "Student Grade",
                                       "Form", "School type",
                                       "Sex", "Nationality", "Answers 1", "Answers 2", "Answers 3", "Answers 4"]
-        elif st.session_state.input_im == "Solved Ex" and st.session_state.sup is None:
+        elif st.session_state.input_im == "Solved Ex نموذج محلول" and st.session_state.sup is None:
             st.session_state.img = cv2.imread("./img_2.jpg", cv2.IMREAD_GRAYSCALE)
             st.session_state.data = [[152, (192 + 152), 368, (190 + 368), 10, 10],
                                      [152, (192 + 152), 260, (99 + 260), 5, 10],
@@ -106,29 +106,29 @@ if __name__ == '__main__':
             st.session_state.Field = ["National ID", "School ID", "Administration ID", "Course", "Student Grade",
                                       "Form", "School type", "Sex", "Nationality", "Answers 1", "Answers 2",
                                       "Answers 3", "Answers 4"]
-        elif st.session_state.input_im == "Upload" and st.session_state.sup is None:
-            st.session_state.img = st.file_uploader("Upload your image", accept_multiple_files=True)
+        elif st.session_state.input_im == "Upload ارفع الملف" and st.session_state.sup is None:
+            st.session_state.img = st.file_uploader("Upload your image إرفع الصورة هنا", accept_multiple_files=False)
             if st.session_state.img:
                 st.session_state.img = cv2.imread("./img_2.jpg", cv2.IMREAD_GRAYSCALE)
             else:
-                st.error("No Images uploaded")
+                st.error("No Images uploaded تأكد من الملف المرفوع")
                 with st.spinner():
                     st.stop()
-            st.info("Make sure scanning areas are correct")
+            st.info("Make sure scanning areas are correct تأكد من تحديد مناطق الاحل")
             st.session_state.Orin = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
             st.session_state.Field = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
             st.write(st.session_state.img)
         st.sidebar.image(st.session_state.img, st.session_state.input_im)
         L1, L3 = st.columns(2)
         with L1:
-            if st.button("Scanning area", type="secondary", use_container_width=True):
+            if st.button("Scanning area حدد مناطق الحل", type="secondary", use_container_width=True):
                 st.session_state.page = 1
                 st._rerun()
             # st.write(len(st.session_state.data))
-            start = st.button("Start scanning", type="primary", use_container_width=True)
+            start = st.button("Start scanning استخرج النتائج", type="primary", use_container_width=True)
             if start:
                 # img_crop = st.session_state.img[10:d[2], d[3]:d[4]]
-                prog = st.progress(0, text='Please wait!!')
+                prog = st.progress(0, text='Please wait!! إنتظر رجاءً')
                 T = [[]]
                 for r in range(len(st.session_state.data)):  # [0]:#
                     prog.progress(int(200 / (len(st.session_state.data) - r + 1)))
@@ -137,45 +137,45 @@ if __name__ == '__main__':
                     elif r == 3:
                         re = ASS(st.session_state.img, st.session_state.data[r], st.session_state.Orin[r])
                         if re == '0':
-                            T[0].append("Language")
+                            T[0].append("Language-لغتي")
                         elif re == '1':
-                            T[0].append("Math")
+                            T[0].append("Math-رياضيات")
                         elif re == '2':
-                            T[0].append("Science")
+                            T[0].append("Science-علوم")
                     elif r == 4:
                         re = ASS(st.session_state.img, st.session_state.data[r], st.session_state.Orin[r])
                         if re == '0':
-                            T[0].append("6th Primary")
+                            T[0].append("6th Primary-سادس إبتدائي")
                         elif re == '1':
-                            T[0].append("3th Intermediate")
+                            T[0].append("3th Intermediate-ثالث متوسط")
                     elif r == 5:
                         re = ASS(st.session_state.img, st.session_state.data[r], st.session_state.Orin[r])
                         if re == '0':
-                            T[0].append("A")
+                            T[0].append("A-أ")
                         elif re == '1':
-                            T[0].append("B")
+                            T[0].append("B-ب")
                         elif re == '2':
-                            T[0].append("C")
+                            T[0].append("C-ج")
                     elif r == 6:
                         re = ASS(st.session_state.img, st.session_state.data[r], st.session_state.Orin[r])
                         if re == '0':
-                            T[0].append("Governmental")
+                            T[0].append("Governmental-حكومي")
                         elif re == '1':
-                            T[0].append("Private")
+                            T[0].append("Private-أهلي")
                         elif re == '2':
-                            T[0].append("Tahfiz")
+                            T[0].append("Tahfiz-تحفيظ")
                     elif r == 7:
                         re = ASS(st.session_state.img, st.session_state.data[r], st.session_state.Orin[r])
                         if re == '0':
-                            T[0].append("Male")
+                            T[0].append("Male-ذكر")
                         elif re == '1':
-                            T[0].append("Female")
+                            T[0].append("Female-أنثى")
                     elif r == 8:
                         re = ASS(st.session_state.img, st.session_state.data[r], st.session_state.Orin[r])
                         if re == '0':
-                            T[0].append("Saudi")
+                            T[0].append("Saudi-سعودي")
                         elif re == '1':
-                            T[0].append("Non-Saudi")
+                            T[0].append("Non-Saudi-غيرسعودي")
                     elif r > 8:
                         re = ASS(st.session_state.img, st.session_state.data[r], st.session_state.Orin[r])
                         re = re.replace('3', 'A')
@@ -192,26 +192,26 @@ if __name__ == '__main__':
             st.dataframe(pd.DataFrame(T, columns=st.session_state.Field))
     # N-ID
     if st.session_state.page == 1:
-        st.header("Analysis (N-ID)")
+        st.header("Analysis تحليل (N-ID)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 2
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "National ID", 24)
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "National ID-رقم الهوية", 24)
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 10, )
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 152)
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 192)
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 10, )
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 152)
+                H = st.number_input("H-الإرتفاع", 1, len(st.session_state.img[1, :]), 192)
                 # HX = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 10)
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 368)
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 190)
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 10)
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 368)
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 190)
                 # WY = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
@@ -220,11 +220,11 @@ if __name__ == '__main__':
                 st._rerun()
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X], [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H, Y:Y + W],
                          st.session_state.Field[st.session_state.page - 1] + ' Section')
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -246,7 +246,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -275,26 +275,26 @@ if __name__ == '__main__':
                         se = se + sh
     # S-ID
     if st.session_state.page == 2:
-        st.header("Analysis (S-ID)")
+        st.header("Analysis التحليل (S-ID)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 3  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "School ID", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "School ID رقم المدرسة", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 5)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 152)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 192)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 5)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 152)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 192)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 10)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 260)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 99)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 10)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 260)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 99)  # U
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
@@ -304,11 +304,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -330,7 +330,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -362,23 +362,23 @@ if __name__ == '__main__':
         st.header("Analysis (A-ID)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 4  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Administration ID", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Administration ID رقم الادارة", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 2)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 152)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 192)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 2)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 152)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 192)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 10)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 209)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 40)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 10)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 209)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 40)  # U
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
@@ -388,11 +388,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -414,7 +414,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -447,23 +447,23 @@ if __name__ == '__main__':
         st.header("Analysis (Co)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 5  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Course", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Course", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 1)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 380)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 52)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 3)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 540)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 17)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 3)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 540)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
@@ -473,11 +473,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 5)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [ X : H + X , Y : W + Y ]
@@ -499,7 +499,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -531,23 +531,23 @@ if __name__ == '__main__':
         st.header("Analysis (Gr)")  # U
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 6  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Student Grade", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Student Grade", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 1)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 380)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 52)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 2)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 477)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 17)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 2)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 477)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
@@ -557,11 +557,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -583,7 +583,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -615,23 +615,23 @@ if __name__ == '__main__':
         st.header("Analysis (Fo)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 7  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Form", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Form", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 1)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 380)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 52)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 3)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 380)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 17)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 3)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 380)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
@@ -641,11 +641,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -667,7 +667,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -698,23 +698,23 @@ if __name__ == '__main__':
         st.header("Analysis (Ty)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 8  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "School type", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "School type", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 1)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 373)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 52)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 373)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 3)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 347)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 17)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 3)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 347)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
         with L1:
@@ -724,11 +724,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -750,7 +750,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -782,23 +782,23 @@ if __name__ == '__main__':
         st.header("Analysis (Se)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 9  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Sex", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Sex", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 1)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 380)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 52)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 2)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 292)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 17)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 2)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 292)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
             st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
@@ -809,11 +809,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -835,7 +835,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -867,23 +867,23 @@ if __name__ == '__main__':
         st.header("Analysis (Na)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 10  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Nationality", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Nationality", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 10, 1)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 373)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 52)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 373)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 2)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 252)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 17)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 2)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 252)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
@@ -894,11 +894,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-            if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+            if st.checkbox("Scanning area-منطقة التحديد", True):
                 st.image(st.session_state.img[X:X + H,
                          Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-            if st.checkbox("Sections"):
+            if st.checkbox("Sections-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     # [X: H + X, Y: W + Y]
@@ -920,7 +920,7 @@ if __name__ == '__main__':
                             st.session_state.img[se:se + sh,
                             int(Y):int(Y + W)], "S" + str(t))
                         se = se + sh
-            if st.checkbox("Divide options"):
+            if st.checkbox("Divide options-تقسيم الخلايا"):
                 Col = st.columns(AC)
                 if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                     sh = int((Y + W - Y) / AC)
@@ -952,23 +952,23 @@ if __name__ == '__main__':
         st.header("Analysis (A1)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 11  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Answers 1", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 1", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 20, 15)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 525)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 290)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 4)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 444)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 90)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 444)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
@@ -979,11 +979,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-        if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+        if st.checkbox("Scanning area-منطقة التحديد", True):
             st.image(st.session_state.img[X:X + H,
                      Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-        if st.checkbox("Sections"):
+        if st.checkbox("Sections-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 # [X: H + X, Y: W + Y]
@@ -1005,7 +1005,7 @@ if __name__ == '__main__':
                         st.session_state.img[se:se + sh,
                         int(Y):int(Y + W)], "S" + str(t))
                     se = se + sh
-        if st.checkbox("Divide options"):
+        if st.checkbox("Divide options-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 sh = int((Y + W - Y) / AC)
@@ -1035,23 +1035,23 @@ if __name__ == '__main__':
         st.header("Analysis (A2)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 12  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Answers 2", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 2", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 20, 15)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 525)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 290)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 4)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 315)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 90)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 315)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
@@ -1062,11 +1062,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-        if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+        if st.checkbox("Scanning area-منطقة التحديد", True):
             st.image(st.session_state.img[X:X + H,
                      Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-        if st.checkbox("Sections"):
+        if st.checkbox("Sections-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 # [X: H + X, Y: W + Y]
@@ -1088,7 +1088,7 @@ if __name__ == '__main__':
                         st.session_state.img[se:se + sh,
                         int(Y):int(Y + W)], "S" + str(t))
                     se = se + sh
-        if st.checkbox("Divide options"):
+        if st.checkbox("Divide options-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 sh = int((Y + W - Y) / AC)
@@ -1118,23 +1118,23 @@ if __name__ == '__main__':
         st.header("Analysis (A3)")
         L1, L2 = st.columns(2)
         with L2:
-            if st.button("Save", type="primary", use_container_width=True):
+            if st.button("Save-حفظ", type="primary", use_container_width=True):
                 st.session_state.page = 13  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Answers 3", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 3", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 20, 15)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 525)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 290)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 4)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 187)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 90)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 187)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
@@ -1145,11 +1145,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-        if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+        if st.checkbox("Scanning area-منطقة التحديد", True):
             st.image(st.session_state.img[X:X + H,
                      Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-        if st.checkbox("Sections"):
+        if st.checkbox("Sections-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 # [X: H + X, Y: W + Y]
@@ -1171,7 +1171,7 @@ if __name__ == '__main__':
                         st.session_state.img[se:se + sh,
                         int(Y):int(Y + W)], "S" + str(t))
                     se = se + sh
-        if st.checkbox("Divide options"):
+        if st.checkbox("Divide options-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 sh = int((Y + W - Y) / AC)
@@ -1204,26 +1204,26 @@ if __name__ == '__main__':
             if st.button("Submit", type="primary", use_container_width=True):
                 if st.session_state.input_im == "Example نموذج":
                     st.session_state.sup = 0
-                elif st.session_state.input_im == "Solved Ex":
+                elif st.session_state.input_im == "Solved Ex نموذج محلول":
                     st.session_state.sup = 1
-                elif st.session_state.input_im == "Upload":
+                elif st.session_state.input_im == "Upload ارفع الملف":
                     st.session_state.sup = 2
                 st.session_state.page = 0  # U
                 st._rerun()
-            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field", "Answers 4", 24)  # U
-            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation", ["Vertical", "Horizontal"],
+            st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 4", 24)  # U
+            st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا", ["Vertical", "Horizontal"],
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells", 1, 20, 15)  # U
-                X = st.number_input("X", 0, len(st.session_state.img[1, :]), 525)  # U
-                H = st.number_input("H", 1, len(st.session_state.img[1, :]), 290)  # U
+                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
+                H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options", 2, 10, 4)  # U
-                Y = st.number_input("Y", 0, len(st.session_state.img[:, 1]), 56)  # U
-                W = st.number_input("W", 1, len(st.session_state.img[:, 1]), 90)  # U
+                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 56)  # U
+                W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
                 st.session_state.data[st.session_state.page - 1] = [X, X + H, Y, Y + W, AC, AO]
 
@@ -1234,11 +1234,11 @@ if __name__ == '__main__':
             img = st.session_state.img.copy()
             rect = cv2.rectangle(img, [Y, X],
                                  [Y + W, X + H], 0, 10)
-            st.image(rect, "AS")
-        if st.checkbox("Scanning area", True):
+            st.image(rect, "AS-ورقة الحل")
+        if st.checkbox("Scanning area-منطقة التحديد", True):
             st.image(st.session_state.img[X:X + H,
                      Y:Y + W], st.session_state.Field[st.session_state.page - 1])
-        if st.checkbox("Sections"):
+        if st.checkbox("Sections-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 # [X: H + X, Y: W + Y]
@@ -1260,7 +1260,7 @@ if __name__ == '__main__':
                         st.session_state.img[se:se + sh,
                         int(Y):int(Y + W)], "S" + str(t))
                     se = se + sh
-        if st.checkbox("Divide options"):
+        if st.checkbox("Divide options-تقسيم الخلايا"):
             Col = st.columns(AC)
             if st.session_state.Orin[st.session_state.page - 1] == "Vertical":
                 sh = int((Y + W - Y) / AC)
