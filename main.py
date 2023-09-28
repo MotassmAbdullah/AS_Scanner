@@ -112,7 +112,8 @@ if __name__ == '__main__':
         elif st.session_state.input_im == "Upload ارفع الملف" and st.session_state.sup is None:
             file_up = st.file_uploader("Upload your image إرفع الصورة هنا", accept_multiple_files=False)
             if file_up is not None:
-                st.session_state.img = cv2.imread("./"+file_up.name, cv2.IMREAD_GRAYSCALE)
+                st.write(file_up)
+                st.session_state.img = cv2.imread(file_up, cv2.IMREAD_GRAYSCALE)
             else:
                 st.error("No Images uploaded تأكد من الملف المرفوع")
                 with st.spinner():
