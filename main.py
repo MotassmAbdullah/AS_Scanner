@@ -222,13 +222,13 @@ if __name__ == '__main__':
                                                                             0)
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 10, )
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 10, )
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 152)
                 H = st.number_input("H-الإرتفاع", 1, len(st.session_state.img[1, :]), 192)
                 # HX = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 10)
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 10)
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 368)
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 190)
                 # WY = Y + W
@@ -305,13 +305,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 5)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 5)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 152)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 192)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 10)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 10)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 260)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 99)  # U
                 # Y+W = Y + W
@@ -389,13 +389,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 2)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 2)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 152)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 192)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 10)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 10)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 209)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 40)  # U
                 # Y+W = Y + W
@@ -474,13 +474,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 1)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 3)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 3)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 540)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
@@ -558,13 +558,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 1)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 2)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 2)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 477)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
@@ -642,13 +642,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 1)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 3)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 3)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 380)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
@@ -725,13 +725,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 1)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 373)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 3)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 3)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 347)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
@@ -809,13 +809,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 1)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 380)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 2)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 2)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 292)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
@@ -894,13 +894,13 @@ if __name__ == '__main__':
                                                                             0)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 10, 1)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 10, 1)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 373)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 52)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 2)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 2)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 252)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 17)  # U
                 # Y+W = Y + W
@@ -979,13 +979,13 @@ if __name__ == '__main__':
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 20, 15)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 4)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 444)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
@@ -1062,13 +1062,13 @@ if __name__ == '__main__':
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 20, 15)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 4)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 315)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
@@ -1145,13 +1145,13 @@ if __name__ == '__main__':
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 20, 15)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 4)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 187)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
@@ -1234,13 +1234,13 @@ if __name__ == '__main__':
                                                                             1)  # U
             D1, D2 = st.columns(2)
             with D1:
-                AC = st.slider("Amount of cells-عدد الخلايا", 1, 20, 15)  # U
+                AC = st.slider("Cells-عدد الخلايا", 1, 20, 15)  # U
                 X = st.number_input("X-س", 0, len(st.session_state.img[1, :]), 525)  # U
                 H = st.number_input("H-الارتفاع", 1, len(st.session_state.img[1, :]), 290)  # U
                 # X+H = X + H
                 # [ X , X + H , Y , Y + W , AC , AO]
             with D2:
-                AO = st.slider("Amount of options-عدد الخيارات", 2, 10, 4)  # U
+                AO = st.slider("Options-عدد الخيارات", 2, 10, 4)  # U
                 Y = st.number_input("Y-ص", 0, len(st.session_state.img[:, 1]), 56)  # U
                 W = st.number_input("W-العرض", 1, len(st.session_state.img[:, 1]), 90)  # U
                 # Y+W = Y + W
