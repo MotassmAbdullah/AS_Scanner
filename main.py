@@ -55,7 +55,6 @@ if __name__ == '__main__':
         st.session_state.page = 0
         st.session_state.img = cv2.imread("./img_1.jfif")
         st.session_state.sup = None
-        # st.balloons()
 
     if st.session_state.page == 0:
         st.subheader("Welcome  أهلا بك")
