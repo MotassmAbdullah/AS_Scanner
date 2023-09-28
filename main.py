@@ -47,7 +47,7 @@ def ASS(im, d, o):
 if __name__ == '__main__':
     st.set_page_config("AS Scanner", ":scroll:")
     st.sidebar.progress(3, "Memberships ( 2,000,000 $$)  عداد المشتركين")
-    st.title("AS Scanner قارئ اوراق الاجابات")
+    st.title("AS Scanner المصحح الآلي")
     st.sidebar.info('License expiry date 1/1/2024 نهاية الاشتراك')
     st.sidebar.info("0.1.0 (Privet app تطبيق خاص)")
     st.sidebar.success("Contact +966503029722 للتواصل")
@@ -58,7 +58,7 @@ if __name__ == '__main__':
         st.balloons()
 
     if st.session_state.page == 0:
-        st.subheader("Welcome Moaiad أهلا مؤيد")
+        st.subheader("Welcome  أهلا بك")
         if st.session_state.sup is None:
             st.session_state.input_im = st.radio("Input", ["Example نموذج", "Solved Ex نموذج محلول", "Upload ارفع الملف"], 1)
         else:
