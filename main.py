@@ -1351,7 +1351,7 @@ if __name__ == '__main__':
             st.divider()
             if st.session_state.sup is None:
                 st.session_state.input_im = st.radio("Input",
-                                                     ["Example", "Solved Ex", "Upload"],
+                                                     ["Example 1", "Example 2", "Upload Images"],
                                                      1, horizontal=True,
                                                      captions=["EM Form",
                                                                "EM Solved Form",
