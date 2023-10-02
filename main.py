@@ -155,7 +155,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("حدد مناطق الحل", type="secondary", use_container_width=True):
                     st.session_state.page = 1
-                    st._rerun()
+                    st.rerun()
                 # st.write(len(st.session_state.data))
                 start = st.button("استخرج النتائج", type="primary", use_container_width=True)
                 if start:
@@ -229,7 +229,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 2
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال",
                                                                                   "National ID-رقم الهوية",
                                                                                   24)
@@ -252,7 +252,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):
                     st.session_state.page = 0
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X], [Y + W, X + H], 0, 10)
                 st.image(rect, "AS-ورقة الحل")
@@ -315,7 +315,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 3  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال",
                                                                                   "School ID رقم المدرسة",
                                                                                   24)  # U
@@ -338,7 +338,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 1
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -402,7 +402,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 4  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال",
                                                                                   "Administration ID رقم الادارة",
                                                                                   24)  # U
@@ -425,7 +425,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 2
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -490,7 +490,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 5  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Course", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -511,7 +511,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):
                     st.session_state.page = 3  # U
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 5)
@@ -575,7 +575,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 6  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Student Grade",
                                                                                   24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
@@ -597,7 +597,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 4
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -661,7 +661,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 7  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Form", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -682,7 +682,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 5
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -745,7 +745,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 8  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "School type",
                                                                                   24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
@@ -767,7 +767,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 6
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -831,7 +831,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 9  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Sex", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -853,7 +853,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 7
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -917,7 +917,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 10  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Nationality",
                                                                                   24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
@@ -940,7 +940,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 8
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1004,7 +1004,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 11  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 1", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -1026,7 +1026,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 9
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1088,7 +1088,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 12  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 2", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -1110,7 +1110,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 10
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1172,7 +1172,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 13  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 3", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -1194,7 +1194,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 11
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1262,7 +1262,7 @@ if __name__ == '__main__':
                     elif st.session_state.input_im == "Upload ارفع الملف":
                         st.session_state.sup = 2
                     st.session_state.page = 0  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 4", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -1284,7 +1284,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 12
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1442,7 +1442,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Scanning area", type="secondary", use_container_width=True):
                     st.session_state.page = 1
-                    st._rerun()
+                    st.rerun()
                 # st.write(len(st.session_state.data))
                 start = st.button("Start scanning", type="primary", use_container_width=True)
                 if start:
@@ -1516,7 +1516,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 2
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال",
                                                                                   "National ID-رقم الهوية",
                                                                                   24)
@@ -1539,7 +1539,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):
                     st.session_state.page = 0
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X], [Y + W, X + H], 0, 10)
                 st.image(rect, "AS-ورقة الحل")
@@ -1602,7 +1602,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 3  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال",
                                                                                   "School ID رقم المدرسة",
                                                                                   24)  # U
@@ -1625,7 +1625,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 1
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1689,7 +1689,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 4  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال",
                                                                                   "Administration ID رقم الادارة",
                                                                                   24)  # U
@@ -1712,7 +1712,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 2
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1777,7 +1777,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 5  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Course", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -1798,7 +1798,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):
                     st.session_state.page = 3  # U
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 5)
@@ -1862,7 +1862,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 6  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Student Grade",
                                                                                   24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
@@ -1884,7 +1884,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 4
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -1948,7 +1948,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 7  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Form", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -1969,7 +1969,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 5
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -2032,7 +2032,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 8  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "School type",
                                                                                   24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
@@ -2054,7 +2054,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 6
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -2118,7 +2118,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 9  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Sex", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -2140,7 +2140,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 7
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -2204,7 +2204,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 10  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Nationality",
                                                                                   24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
@@ -2227,7 +2227,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 8
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -2291,7 +2291,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 11  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 1", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -2313,7 +2313,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 9
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -2375,7 +2375,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 12  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 2", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -2397,7 +2397,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 10
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -2459,7 +2459,7 @@ if __name__ == '__main__':
             with L2:
                 if st.button("Save-حفظ", type="primary", use_container_width=True):
                     st.session_state.page = 13  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 3", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -2481,7 +2481,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 11
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
@@ -2549,7 +2549,7 @@ if __name__ == '__main__':
                     elif st.session_state.input_im == "Upload ارفع الملف":
                         st.session_state.sup = 2
                     st.session_state.page = 0  # U
-                    st._rerun()
+                    st.rerun()
                 st.session_state.Field[st.session_state.page - 1] = st.text_input("Field-المجال", "Answers 4", 24)  # U
                 st.session_state.Orin[st.session_state.page - 1] = st.selectbox("Orientation-إتجاه الخلايا",
                                                                                 ["Vertical", "Horizontal"],
@@ -2571,7 +2571,7 @@ if __name__ == '__main__':
             with L1:
                 if st.button("Back-رجوع", use_container_width=True):  # U
                     st.session_state.page = 12
-                    st._rerun()
+                    st.rerun()
                 img = st.session_state.img.copy()
                 rect = cv2.rectangle(img, [Y, X],
                                      [Y + W, X + H], 0, 10)
