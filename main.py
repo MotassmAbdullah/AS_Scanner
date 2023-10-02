@@ -69,13 +69,13 @@ if __name__ == '__main__':
                                                      ["1 نموذج", "نموذج 2", "ارفع الملف"],
                                                      1, horizontal=True,
                                                      captions=["نموذج وزارة التعليم لاختبار التحصيلي",
-                                                               "نموذج محلول من وزارة التعليم", "..ghj."])
+                                                               "نموذج محلول من وزارة التعليم", ""])
             else:
                 st.session_state.input_im = st.radio("أختر نوع المدخل",
                                                      ["1 نموذج", "2 نموذج ", "ارفع الملف"],
                                                      st.session_state.sup, horizontal=True,
                                                      captions=["نموذج وزارة التعليم لاختبار التحصيلي",
-                                                               "نموذج محلول من وزارة التعليم", "..ghj."])
+                                                               "نموذج محلول من وزارة التعليم", ""])
             st.text("<<<إستعرض الورقة في الشريط الجانبي<<<")
             st.sidebar.title("إستعراض")
             if st.session_state.input_im == "1 نموذج" and st.session_state.sup is None:
